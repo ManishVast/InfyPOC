@@ -3,7 +3,7 @@ Resources:
   MyDynamoDBTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
-      TableName: 'Customer_Interaction_CFV3'
+      TableName: 'Customer_Interaction_CFV4'
       AttributeDefinitions:
         - AttributeName: 'PK'
           AttributeType: 'S'
@@ -18,48 +18,48 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
 
-  MyLambdaExecutionRole:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: 'Allow'
-            Principal:
-              Service: 'lambda.amazonaws.com'
-            Action: 'sts:AssumeRole'
-      Policies:
-        - PolicyName: 'LambdaS3DynamoDBPolicy'
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: 'Allow'
-                Action:
-                  - 's3:GetObject'
-                  - 'dynamodb:PutItem'
-                  - 'logs:CreateLogGroup'
-                  - 'logs:CreateLogStream'
-                  - 'logs:PutLogEvents'
-                Resource: '*'
+  # MyLambdaExecutionRole:
+  #   Type: 'AWS::IAM::Role'
+  #   Properties:
+  #     AssumeRolePolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #         - Effect: 'Allow'
+  #           Principal:
+  #             Service: 'lambda.amazonaws.com'
+  #           Action: 'sts:AssumeRole'
+  #     Policies:
+  #       - PolicyName: 'LambdaS3DynamoDBPolicy'
+  #         PolicyDocument:
+  #           Version: '2012-10-17'
+  #           Statement:
+  #             - Effect: 'Allow'
+  #               Action:
+  #                 - 's3:GetObject'
+  #                 - 'dynamodb:PutItem'
+  #                 - 'logs:CreateLogGroup'
+  #                 - 'logs:CreateLogStream'
+  #                 - 'logs:PutLogEvents'
+  #               Resource: '*'
 
-  MyLambdaFunction:
-    Type: 'AWS::Lambda::Function'
-    Properties:
-      FunctionName: 'DataIngestionLambda_CFV4'
-      Handler: 'lambda_function.handler'
-      Role: !GetAtt MyLambdaExecutionRole.Arn
-      Code:
-        S3Bucket: 'amazon-connect-54929054165d'  # Replace with your bucket name
-        S3Key: 'WebexCC/PwC/lambda-code.zip'  # Replace with your zip file key
-      Runtime: 'python3.12'
-      Timeout: 900
-      Layers:
-        - arn:aws:lambda:us-east-1:336392948345:layer:AWSSDKPandas-Python312:13
+  # MyLambdaFunction:
+  #   Type: 'AWS::Lambda::Function'
+  #   Properties:
+  #     FunctionName: 'DataIngestionLambda_CFV4'
+  #     Handler: 'lambda_function.handler'
+  #     Role: !GetAtt MyLambdaExecutionRole.Arn
+  #     Code:
+  #       S3Bucket: 'amazon-connect-54929054165d'  # Replace with your bucket name
+  #       S3Key: 'WebexCC/PwC/lambda-code.zip'  # Replace with your zip file key
+  #     Runtime: 'python3.12'
+  #     Timeout: 900
+  #     Layers:
+  #       - arn:aws:lambda:us-east-1:336392948345:layer:AWSSDKPandas-Python312:13
 
-  CustomResource:
-    Type: 'Custom::TriggerLambda'
-    Properties:
-      ServiceToken: !GetAtt MyLambdaFunction.Arn
+  # CustomResource:
+  #   Type: 'Custom::TriggerLambda'
+  #   Properties:
+  #     ServiceToken: !GetAtt MyLambdaFunction.Arn
 
 Outputs:
   DynamoDBTableName:
