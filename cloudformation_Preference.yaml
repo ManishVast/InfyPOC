@@ -28,7 +28,7 @@ Resources:
                 WriteCapacityUnits: "5" 
         
         LocalSecondaryIndexes: 
-                - IndexName: "CompanyCode" 
+                - IndexName: "CompanyCodeLSI" 
                   KeySchema:
                     - AttributeName: "AcctId" 
                       KeyType: "HASH" 
@@ -36,7 +36,7 @@ Resources:
                       KeyType: "RANGE"
                   Projection:
                      ProjectionType: "ALL"
-                - IndexName: "LOB" 
+                - IndexName: "LOBLSI" 
                   KeySchema:
                     - AttributeName: "AcctId" 
                       KeyType: "HASH" 
