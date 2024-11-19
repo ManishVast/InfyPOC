@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: "2010-09-09" 
+Description: CLoudformation template file to create dynamoDB table
+Resources: 
+        myDynamoDBTable:
+        Type: AWS::DynamoDB::Table 
+        Properties: 
+            TableName: :"2xsfnv-ck529-UCDP-CustomerPreferences-table"
+            AttributeDefinitions: 
+                - AttributeName: "AcctId"
+                  AttributeType: "S" 
+                - AttributeName: "ContractAcctId" 
+                  AttributeType: "S" 
+                - AttributeName: "Email" 
+                  AttributeType: "S" 
+                - AttributeName: "Phone"
+                  AttributeType: "S" 
+                - AttributeName: "CompanyCode" 
+                  AttributeType: "S" 
+                - AttributeName: "LOB" 
+                  AttributeType: "S"
+                - AttributeName: "CustPref" 
+                  AttributeType: "S"
+            KeySchema:
+                - AttributeName: "AcctId" 
+                  KeyType: "HASH" 
+                - AttributeName: "ContractAcctId " 
+                  KeyType: "RANGE"
+            ProvisionedThroughput: 
+                ReadCapacityUnits: "5" 
+                WriteCapacityUnits: "5" 
+                
+            GlobalSecondaryIndexes: 
+                - IndexName: "GSI_Email_CAcct" 
+                  KeySchema: 
+                    - AttributeName:"ContractAcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "Email" 
+                      KeyType: "RANGE" 
+                  Projection:
+                    ProjectionType: "ALL"
+                - IndexName: "GSI_Phone_CAcct" 
+                  KeySchema: 
+                    - AttributeName:"ContractAcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "Phone" 
+                      KeyType: "RANGE" 
+                  Projection:
+                    ProjectionType: "ALL"
+            LocalSecondaryIndexes: 
+                - IndexName: "CompanyCode" 
+                  KeySchema:
+                    - AttributeName: "AcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "CompanyCode" 
+                      KeyType: "RANGE"
+                  Projection:
+                     ProjectionType: "ALL"
+                - IndexName: "LOB" 
+                  KeySchema:
+                    - AttributeName: "AcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "LOB" 
+                      KeyType: "RANGE"
+                  Projection:
+                    ProjectionType: "ALL"
+Outputs:
+  DynamoDBTableName:
+    Value: !Ref 2xsfnv-ck529-UCDP-CustomerPreferences-table
