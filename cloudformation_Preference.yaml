@@ -23,7 +23,7 @@ Resources:
             KeySchema:
                 - AttributeName: "AcctId" 
                   KeyType: "HASH" 
-                - AttributeName: "ContractAcctId " 
+                - AttributeName: "ContractAcctId" 
                   KeyType: "RANGE"
             ProvisionedThroughput: 
                 ReadCapacityUnits: "5" 
