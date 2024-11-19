@@ -50,9 +50,9 @@ Resources:
         GlobalSecondaryIndexes: 
                 - IndexName: "GSI_Email_CAcct" 
                   KeySchema: 
-                    - AttributeName:"ContractAcctId" 
+                    - AttributeName:"Email" 
                       KeyType: "HASH" 
-                    - AttributeName: "Email" 
+                    - AttributeName: "ContractAcctId" 
                       KeyType: "RANGE" 
                   Projection:
                     ProjectionType: "ALL"
