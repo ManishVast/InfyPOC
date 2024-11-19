@@ -60,6 +60,3 @@ Resources:
           KeyType: RANGE
       Projection:
         ProjectionType: ALL
-Outputs:
-  DynamoDBTableName:
-    Value: !Ref myDynamoDBTable
