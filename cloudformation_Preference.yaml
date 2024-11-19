@@ -53,15 +53,23 @@ Resources:
                     - AttributeName: "ContractAcctId" 
                       KeyType: "RANGE" 
                   Projection:
-                    ProjectionType: "ALL"
+                    ProjectionType: "ALL"            
+                  ProvisionedThroughput: 
+                    ReadCapacityUnits: "5" 
+                    WriteCapacityUnits: "5" 
+                    
                 - IndexName: "GSI_Phone_CAcct" 
                   KeySchema: 
                     - AttributeName: "ContractAcctId" 
                       KeyType: "HASH" 
                     - AttributeName: "Phone" 
                       KeyType: "RANGE" 
-                  Projection:
+                Projection:
                     ProjectionType: "ALL"
+                ProvisionedThroughput: 
+                    ReadCapacityUnits: "5" 
+                    WriteCapacityUnits: "5" 
+
 
 Outputs:
   DynamoDBTableName:
