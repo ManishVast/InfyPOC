@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09" 
-Description: CLoudformation template file to create dynamoDB table
+Description: Cloudformation template file to create DynamoDB table
 Resources: 
         myDynamoDBTable:
         Type: AWS::DynamoDB::Table 
