@@ -46,7 +46,7 @@ Resources:
                     Projection:
                       ProjectionType: "ALL"
             LocalSecondaryIndexes: 
-                - IndexName: "CompanyCode" 
+                - IndexName: "LSI_CompanyCode" 
                   KeySchema:
                     - AttributeName: "AcctId" 
                       KeyType: "HASH" 
@@ -54,7 +54,7 @@ Resources:
                       KeyType: "RANGE"
                   Projection:
                     ProjectionType: "ALL"
-                - IndexName: "LOB" 
+                - IndexName: "LSI_LOB" 
                   KeySchema:
                     - AttributeName: "AcctId" 
                       KeyType: "HASH" 
