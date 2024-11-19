@@ -43,23 +43,23 @@ Resources:
           KeyType: "RANGE" 
       Projection:
         ProjectionType: "ALL"
-    LocalSecondaryIndexes: 
-      - IndexName: "LSI_CompanyCode" 
-        KeySchema:
-          - AttributeName: "AcctId" 
-            KeyType: "HASH" 
-          - AttributeName: "CompanyCode" 
-            KeyType: "RANGE"
-          Projection:
-            ProjectionType: "ALL"
-      - IndexName: "LSI_LOB" 
-        KeySchema:
-          - AttributeName: "AcctId" 
-            KeyType: "HASH" 
-          - AttributeName: "LOB" 
-            KeyType: "RANGE"
-          Projection:
-            ProjectionType: "ALL"
+  LocalSecondaryIndexes: 
+    - IndexName: "LSI_CompanyCode" 
+      KeySchema:
+        - AttributeName: "AcctId" 
+          KeyType: "HASH" 
+        - AttributeName: "CompanyCode" 
+          KeyType: "RANGE"
+      Projection:
+        ProjectionType: "ALL"
+    - IndexName: "LSI_LOB" 
+      KeySchema:
+        - AttributeName: "AcctId" 
+          KeyType: "HASH" 
+        - AttributeName: "LOB" 
+          KeyType: "RANGE"
+      Projection:
+        ProjectionType: "ALL"
 Outputs:
   DynamoDBTableName:
     Value: !Ref 2xsfnv-ck529-UCDP-CustomerPreferences-table
