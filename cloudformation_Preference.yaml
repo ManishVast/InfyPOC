@@ -45,12 +45,13 @@ Resources:
                       KeyType: "RANGE"
                   Projection:
                     ProjectionType: "ALL"
+              
               GlobalSecondaryIndexes: 
                   - IndexName: "GSI_Email_CAcct" 
                     KeySchema: 
-                      - AttributeName: "Email" 
-                        KeyType: "HASH" 
                       - AttributeName: "ContractAcctId" 
+                        KeyType: "HASH" 
+                      - AttributeName: "Email" 
                         KeyType: "RANGE" 
                     Projection:
                       ProjectionType: "ALL"
