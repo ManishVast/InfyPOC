@@ -28,7 +28,24 @@ Resources:
             ProvisionedThroughput: 
                 ReadCapacityUnits: "5" 
                 WriteCapacityUnits: "5" 
-                
+        
+        LocalSecondaryIndexes: 
+                - IndexName: "CompanyCode" 
+                  KeySchema:
+                    - AttributeName: "AcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "CompanyCode" 
+                      KeyType: "RANGE"
+                  Projection:
+                     ProjectionType: "ALL"
+                - IndexName: "LOB" 
+                  KeySchema:
+                    - AttributeName: "AcctId" 
+                      KeyType: "HASH" 
+                    - AttributeName: "LOB" 
+                      KeyType: "RANGE"
+                  Projection:
+                    ProjectionType: "ALL"
             GlobalSecondaryIndexes: 
                 - IndexName: "GSI_Email_CAcct" 
                   KeySchema: 
@@ -46,23 +63,7 @@ Resources:
                       KeyType: "RANGE" 
                   Projection:
                     ProjectionType: "ALL"
-            LocalSecondaryIndexes: 
-                - IndexName: "CompanyCode" 
-                  KeySchema:
-                    - AttributeName: "AcctId" 
-                      KeyType: "HASH" 
-                    - AttributeName: "CompanyCode" 
-                      KeyType: "RANGE"
-                  Projection:
-                     ProjectionType: "ALL"
-                - IndexName: "LOB" 
-                  KeySchema:
-                    - AttributeName: "AcctId" 
-                      KeyType: "HASH" 
-                    - AttributeName: "LOB" 
-                      KeyType: "RANGE"
-                  Projection:
-                    ProjectionType: "ALL"
+
 Outputs:
   DynamoDBTableName:
     Value: !Ref 2xsfnv-ck529-UCDP-CustomerPreferences-table
