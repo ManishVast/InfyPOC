@@ -64,9 +64,9 @@ Resources:
                       KeyType: "HASH" 
                     - AttributeName: "Phone" 
                       KeyType: "RANGE" 
-                Projection:
+                  Projection:
                     ProjectionType: "ALL"
-                ProvisionedThroughput: 
+                  ProvisionedThroughput: 
                     ReadCapacityUnits: "5" 
                     WriteCapacityUnits: "5" 
 
