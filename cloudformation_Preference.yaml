@@ -18,6 +18,8 @@ Resources:
           AttributeType: S
         - AttributeName: LOB
           AttributeType: S
+        - AttributeName: CustPref
+          AttributeType: S
       KeySchema:
         - AttributeName: AcctId
           KeyType: HASH
