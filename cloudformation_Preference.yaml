@@ -33,16 +33,16 @@ Resources:
           KeyType: "HASH" 
         - AttributeName: "ContractAcctId" 
           KeyType: "RANGE" 
-        Projection:
-          ProjectionType: "ALL"
-      - IndexName: "GSI_Phone_CAcct" 
-        KeySchema: 
-          - AttributeName: "Phone" 
-            KeyType: "HASH" 
-          - AttributeName: "ContractAcctId" 
-            KeyType: "RANGE" 
-          Projection:
-            ProjectionType: "ALL"
+      Projection:
+        ProjectionType: "ALL"
+    - IndexName: "GSI_Phone_CAcct" 
+      KeySchema: 
+        - AttributeName: "Phone" 
+          KeyType: "HASH" 
+        - AttributeName: "ContractAcctId" 
+          KeyType: "RANGE" 
+      Projection:
+        ProjectionType: "ALL"
     LocalSecondaryIndexes: 
       - IndexName: "LSI_CompanyCode" 
         KeySchema:
