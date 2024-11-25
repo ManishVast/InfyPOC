@@ -49,7 +49,7 @@ Resources:
   MyLambdaFunction:
     Type: 'AWS::Lambda::Function'
     Properties:
-      FunctionName: 'DataIngestionLambda_CloudForm'
+      FunctionName: 'DataIngestionLambda_ClForm'
       Handler: 'index.handler'
       Role: arn:aws:iam::637160599647:role/FPL_Test_S3
       Runtime: 'python3.12'
